@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevTrack Kanban 📋</title>
+    <script src="" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>Dev<span>Track</span></h1>
+      <form id="form-vaga">
+        <input
+          type="text"
+          id="input-empresa"
+          placeholder="Nome da Empresa (Ex: Google)"
+        />
+        <input
+          type="text"
+          id="input-cargo"
+          placeholder="Cargo (Ex: Desenvolvedor Front-End)"
+        />
+        <button type="submit">Adicionar Vaga</button>
+      </form>
+    </header>
+
+    <main class="board">
+      <div class="coluna" id="coluna-aplicar">
+        <h2>Para Aplicar 📝</h2>
+        <div class="area-cards"></div>
+      </div>
+
+      <div class="coluna" id="coluna-andamento">
+        <h2>Em Entrevista 🗣️</h2>
+        <div class="area-cards"></div>
+      </div>
+
+      <div class="coluna" id="coluna-concluido">
+        <h2>Oferta / Finalizado 🎯</h2>
+        <div class="area-cards"></div>
+      </div>
+    </main>
+  </body>
+</html>
