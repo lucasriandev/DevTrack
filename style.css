@@ -1,0 +1,137 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: #0f172a;
+  color: #f8fafc;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding: 20px 40px;
+  background: #1e293b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #334155;
+}
+h1 {
+  font-size: 24px;
+  color: #f8fafc;
+}
+h1 span {
+  color: #38bdf8;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+}
+input {
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #f8fafc;
+  outline: none;
+}
+input:focus {
+  border-color: #38bdf8;
+}
+button {
+  padding: 10px 20px;
+  background: #38bdf8;
+  color: #0f172a;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+button:hover {
+  background: #0284c7;
+  color: white;
+}
+
+.board {
+  display: flex;
+  gap: 20px;
+  padding: 40px;
+  flex: 1;
+  overflow-x: auto;
+  align-items: flex-start;
+}
+
+.coluna {
+  background: #1e293b;
+  width: 350px;
+  min-height: 500px;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.coluna h2 {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.area-cards {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-height: 100px;
+}
+.area-cards.hover-ativo {
+  background: rgba(56, 189, 248, 0.1);
+  border-radius: 8px;
+  border: 2px dashed #38bdf8;
+}
+
+.card {
+  background: #334155;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: grab;
+  position: relative;
+  border-left: 4px solid #38bdf8;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.card:active {
+  cursor: grabbing;
+}
+.card h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #f8fafc;
+}
+.card p {
+  font-size: 14px;
+  color: #cbd5e1;
+}
+
+.btn-del {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.arrastando {
+  opacity: 0.5;
+  border: 2px dashed #f8fafc;
+}
