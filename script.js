@@ -2,8 +2,9 @@ const form = document.querySelector("#form-vaga");
 const inputEmpresa = document.querySelector("#input-empresa");
 const inputCargo = document.querySelector("#input-cargo");
 
-const areaAplicar = document.querySelector("#coluna-aplicar .area-cards");
 const colunas = document.querySelectorAll(".coluna");
+
+let arrasteAtual = JSON.parse(localStorage.getItem("Atual")) || [];
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -14,21 +15,35 @@ form.addEventListener("submit", (e) => {
   if (empresa === "" || cargo === "") {
     return;
   }
-  criarCard(empresa, cargo);
+
+  const novaVaga = {
+    id: Date.now(),
+    empresa: empresa,
+    cargo: cargo,
+    status: "coluna-aplicar",
+  };
+
+  arrasteAtual.push(novaVaga);
+  localStorage.setItem("Atual", JSON.stringify(arrasteAtual));
+
+  criarCard(novaVaga);
 
   inputCargo.value = "";
   inputEmpresa.value = "";
 });
 
-function criarCard(empresa, cargo) {
+function criarCard(vaga) {
   const novaDiv = document.createElement("div");
   novaDiv.setAttribute("draggable", "true");
   novaDiv.classList.add("card");
 
+  // Carimbamos o ID no HTML para acharmos ele depois na hora de arrastar
+  novaDiv.dataset.id = vaga.id;
+
   novaDiv.innerHTML = `
-    <h3>${empresa}</h3>
-    <p>${cargo}</p>
-    `;
+    <h3>${vaga.empresa}</h3>
+    <p>${vaga.cargo}</p>
+  `;
 
   const btnDelete = document.createElement("button");
   btnDelete.innerHTML = "❌";
@@ -36,10 +51,16 @@ function criarCard(empresa, cargo) {
 
   btnDelete.addEventListener("click", () => {
     novaDiv.remove();
+
+    arrasteAtual = arrasteAtual.filter((item) => item.id !== vaga.id);
+
+    localStorage.setItem("Atual", JSON.stringify(arrasteAtual));
   });
 
   novaDiv.appendChild(btnDelete);
-  areaAplicar.appendChild(novaDiv);
+
+  const colunaCerta = document.querySelector(`#${vaga.status} .area-cards`);
+  colunaCerta.appendChild(novaDiv);
 
   aplicarEventosDeArraste(novaDiv);
 }
@@ -59,14 +80,30 @@ colunas.forEach((item) => {
     e.preventDefault();
     item.classList.add("hover-ativo");
   });
+
   item.addEventListener("dragleave", () => {
     item.classList.remove("hover-ativo");
   });
 
   item.addEventListener("drop", () => {
     item.classList.remove("hover-ativo");
+
     const cardArrastado = document.querySelector(".arrastando");
 
     item.querySelector(".area-cards").appendChild(cardArrastado);
+
+    const idDoCard = Number(cardArrastado.dataset.id);
+    const novoStatus = item.id;
+
+    const vagaMovida = arrasteAtual.find((vaga) => vaga.id === idDoCard);
+
+    if (vagaMovida) {
+      vagaMovida.status = novoStatus;
+      localStorage.setItem("Atual", JSON.stringify(arrasteAtual));
+    }
   });
+});
+
+arrasteAtual.forEach((item) => {
+  criarCard(item);
 });
