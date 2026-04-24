@@ -135,3 +135,34 @@ button:hover {
   opacity: 0.5;
   border: 2px dashed #f8fafc;
 }
+
+/* =========================================
+   RESPONSIVIDADE PARA CELULARES E TABLETS
+   ========================================= */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column; /* Coloca o título e o formulário em coluna */
+    gap: 20px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  form {
+    flex-direction: column; /* Empilha os inputs e o botão */
+    width: 100%;
+  }
+
+  input,
+  button {
+    width: 100%; /* Faz os campos ocuparem toda a largura da tela */
+  }
+
+  .board {
+    padding: 20px; /* Reduz o espaçamento nas laterais do quadro */
+  }
+
+  .coluna {
+    min-width: 85vw; /* Faz a coluna ocupar 85% da tela do celular, facilitando o scroll horizontal */
+    width: auto;
+  }
+}
