@@ -5,7 +5,7 @@ Uma ferramenta de organização visual inspirada no Trello, desenvolvida para aj
 ## 🔗 Demonstração
 Acesse o projeto online aqui: **[DevTrack Kanban](https://lucasriandev.github.io/DevTrack/)**
 
-*(Insira aqui o link ou a tag de imagem de preview do seu projeto)*
+<img width="1914" height="856" alt="image" src="https://github.com/user-attachments/assets/931d0d7a-41c8-4325-8683-ee4e4aca3a1d" />
 
 ## 📋 Sobre o Projeto
 O DevTrack é um gerenciador de tarefas estilo Kanban onde você pode adicionar empresas e cargos aos quais se candidatou, e movê-los entre diferentes colunas de status ("Para Aplicar", "Em Entrevista", "Oferta / Finalizado"). O projeto foi construído focando na interatividade do usuário e na retenção de dados nativa do navegador.
